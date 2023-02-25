@@ -55,4 +55,19 @@ export class DogsComponent implements OnInit {
     })
   }
 
+  deleteDog(dog: Dog) {
+    if (!window.confirm(`Are you sure you want to delete '${dog.name}'?`)) {
+      return;
+    }
+    this.dogService.deleteDog(dog).subscribe({
+      next: result => {
+        this.dogs = this.dogs.filter(item => item._id !== dog._id)
+        this.toast.setMessage('dog deleted!', 'success')
+      },
+      error: error => {
+        this.toast.setMessage(`error: ${error}`, 'danger')
+      }
+    })
+  }
+
 }
