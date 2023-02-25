@@ -1,0 +1,39 @@
+<app-loading [condition]="isLoading"></app-loading>
+
+<div class="card mb-3" *ngIf="!isLoading">
+    <h4 class="card-header">Current dogs ({{dogs.length}})</h4>
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead class="table-secondary">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Weight</th>
+                    <th scope="col">Favourite Toy</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody *ngIf="dogs.length==0">
+                <tr>
+                    <td colspan="5">there are no dogs. add one below</td>
+                </tr>
+            </tbody>
+            <tbody *ngIf="!isEditing">
+                <tr *ngFor="let dog of dogs">
+                    <td>{{dog.name}}</td>
+                    <td>{{dog.age}}</td>
+                    <td>{{dog.weight}}</td>
+                    <td>{{dog.favouriteToy}}</td>
+                    <td>
+                        <button class="btn btn-sm btn-primary">
+                            <i class="fa fa-pencil"></i> Edit
+                        </button>
+                        <button class="btn btn-sm btn-danger">
+                            <i class="fa fa-trash"></i> Delete
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
