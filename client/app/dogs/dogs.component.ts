@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DogService } from '../services/dog.service';
 import { Dog } from '../shared/models/dog.model';
 import { ToastComponent } from '../shared/toast/toast.component';
@@ -13,6 +14,7 @@ export class DogsComponent implements OnInit {
   isLoading = true;
   dogs: Dog[] = []
   isEditing = false;
+  dog = new Dog();
 
   constructor(
     private dogService: DogService,
@@ -32,6 +34,23 @@ export class DogsComponent implements OnInit {
       error: error => this.toast.setMessage('unable to load dogs!', 'danger'),
       complete: () => {
         this.isLoading = false
+      }
+    })
+  }
+
+  enableEditing(dog: Dog){
+    this.isEditing = true
+    this.dog = dog
+  }
+
+  editDog() {
+    this.dogService.updateDog(this.dog).subscribe({
+      next: result => {
+        this.isEditing = false;
+        this.toast.setMessage('dog updated!', 'success');
+      },
+      error: error => {
+        this.toast.setMessage(`something went wrong ${error}`, 'danger');
       }
     })
   }

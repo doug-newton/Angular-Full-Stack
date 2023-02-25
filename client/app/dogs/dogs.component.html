@@ -27,7 +27,7 @@
                     <td>{{dog.weight}}</td>
                     <td>{{dog.favouriteToy}}</td>
                     <td>
-                        <button class="btn btn-sm btn-primary">
+                        <button class="btn btn-sm btn-primary" (click)="enableEditing(dog)">
                             <i class="fa fa-pencil"></i> Edit
                         </button>
                         <button class="btn btn-sm btn-danger">
@@ -36,6 +36,37 @@
                     </td>
                 </tr>
             </tbody>
+
+            <tbody *ngIf="isEditing && dog">
+                <tr>
+                    <td colspan="5">
+                        <form (ngSubmit)="editDog()">
+                            <div class="row row-cols-1 row-cols-sm-auto g-2">
+                                <div class="col">
+                                    <input class="form-control" placeholder="Name" name="name" [(ngModel)]="dog.name" type="text">
+                                </div>
+                                <div class="col">
+                                    <input class="form-control" placeholder="Age" name="age" [(ngModel)]="dog.age" type="number">
+                                </div>
+                                <div class="col">
+                                    <input class="form-control" placeholder="Weight" name="weight" [(ngModel)]="dog.weight"
+                                        type="number">
+                                </div>
+                                <div class="col">
+                                    <input class="form-control" placeholder="Favourite Toy" name="favouriteToy"
+                                        [(ngModel)]="dog.favouriteToy" type="text">
+                                </div>
+                                <div class="col">
+                                    <button class="btn btn-primary btn-small" type="submit">
+                                        <i class="fa fa-save"></i> save
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+
         </table>
     </div>
 </div>
