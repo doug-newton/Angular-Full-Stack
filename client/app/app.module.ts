@@ -23,6 +23,7 @@ import { AdminComponent } from './admin/admin.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { DogsComponent } from './dogs/dogs.component';
 import { AddDogFormComponent } from './add-dog-form/add-dog-form.component';
+import { EditDogFormComponent } from './edit-dog-form/edit-dog-form.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { AddDogFormComponent } from './add-dog-form/add-dog-form.component';
     AdminComponent,
     NotFoundComponent,
     DogsComponent,
-    AddDogFormComponent
+    AddDogFormComponent,
+    EditDogFormComponent
   ],
   imports: [
     AppRoutingModule,

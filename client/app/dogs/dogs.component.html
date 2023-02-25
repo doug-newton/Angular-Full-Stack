@@ -38,29 +38,7 @@
             </tbody>
 
             <tbody *ngIf="isEditing && dog">
-                <tr>
-                    <td>
-                        <input class="form-control" placeholder="Name" name="name" [(ngModel)]="dog.name" type="text">
-                    </td>
-                    <td>
-                        <input class="form-control" placeholder="Age" name="age" [(ngModel)]="dog.age" type="number">
-                    </td>
-                    <td>
-                        <input class="form-control" placeholder="Weight" name="weight" [(ngModel)]="dog.weight" type="number">
-                    </td>
-                    <td>
-                        <input class="form-control" placeholder="Favourite Toy" name="favouriteToy" [(ngModel)]="dog.favouriteToy"
-                            type="text">
-                    </td>
-                    <td>
-                        <button class="btn btn-primary btn-sm" type="button" (click)="editDog()">
-                            <i class="fa fa-save"></i> Save
-                        </button>
-                        <button class="btn btn-warning btn-sm ms-1" type="button" (click)="cancelEditing()">
-                            <i class="fa fa-times"></i> Cancel
-                        </button>
-                    </td>
-                </tr>
+                <tr appEditDogForm [dog]="dog" (editDog)="editDog()" (cancelEditing)="cancelEditing()"></tr>
             </tbody>
 
         </table>
