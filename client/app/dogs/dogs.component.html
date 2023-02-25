@@ -57,8 +57,11 @@
                                         [(ngModel)]="dog.favouriteToy" type="text">
                                 </div>
                                 <div class="col">
-                                    <button class="btn btn-primary btn-small" type="submit">
-                                        <i class="fa fa-save"></i> save
+                                    <button class="btn btn-primary btn-sm" type="submit">
+                                        <i class="fa fa-save"></i> Save
+                                    </button>
+                                    <button class="btn btn-warning btn-sm ms-1" type="button" (click)="cancelEditing()">
+                                        <i class="fa fa-times"></i> Cancel
                                     </button>
                                 </div>
                             </div>

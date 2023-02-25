@@ -43,6 +43,12 @@ export class DogsComponent implements OnInit {
     this.dog = dog
   }
 
+  cancelEditing() {
+    this.isEditing = false
+    this.dog = new Dog
+    this.toast.setMessage( 'editing cancelled', 'warning')
+  }
+
   editDog() {
     this.dogService.updateDog(this.dog).subscribe({
       next: result => {
