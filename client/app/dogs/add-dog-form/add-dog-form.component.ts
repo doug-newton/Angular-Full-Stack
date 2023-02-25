@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { DogService } from '../services/dog.service';
-import { Dog } from '../shared/models/dog.model';
-import { ToastComponent } from '../shared/toast/toast.component';
+import { DogService } from '../../services/dog.service';
+import { Dog } from '../../shared/models/dog.model';
+import { ToastComponent } from '../../shared/toast/toast.component';
 
 @Component({
   selector: 'app-add-dog-form',

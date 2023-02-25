@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl, Validators, UntypedFormBuilder } from '@angular/forms';
-import { CatService } from '../services/cat.service';
-import { ToastComponent } from '../shared/toast/toast.component';
-import { Cat } from '../shared/models/cat.model';
+import { CatService } from '../../services/cat.service';
+import { ToastComponent } from '../../shared/toast/toast.component';
+import { Cat } from '../../shared/models/cat.model';
 
 @Component({
   selector: 'app-add-cat-form',

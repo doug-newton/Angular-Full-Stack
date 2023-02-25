@@ -13,7 +13,7 @@ import { AuthGuardAdmin } from './services/auth-guard-admin.service';
 // Components
 import { AppComponent } from './app.component';
 import { CatsComponent } from './cats/cats.component';
-import { AddCatFormComponent } from './add-cat-form/add-cat-form.component';
+import { AddCatFormComponent } from './cats/add-cat-form/add-cat-form.component';
 import { AboutComponent } from './about/about.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
@@ -22,8 +22,8 @@ import { AccountComponent } from './account/account.component';
 import { AdminComponent } from './admin/admin.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { DogsComponent } from './dogs/dogs.component';
-import { AddDogFormComponent } from './add-dog-form/add-dog-form.component';
-import { DogItemRowComponent } from './dog-item-row/dog-item-row.component';
+import { AddDogFormComponent } from './dogs/add-dog-form/add-dog-form.component';
+import { DogItemRowComponent } from './dogs/dog-item-row/dog-item-row.component';
 
 @NgModule({
   declarations: [

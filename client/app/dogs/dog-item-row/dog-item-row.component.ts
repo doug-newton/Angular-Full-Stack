@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { DogService } from '../services/dog.service';
-import { Dog } from '../shared/models/dog.model';
-import { ToastComponent } from '../shared/toast/toast.component';
+import { DogService } from '../../services/dog.service';
+import { Dog } from '../../shared/models/dog.model';
+import { ToastComponent } from '../../shared/toast/toast.component';
 
 @Component({
   selector: 'tr[appDogItemRow]',
