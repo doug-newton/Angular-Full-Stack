@@ -8,9 +8,11 @@ const secret: jwt.Secret = process.env.SECRET_TOKEN as string;
 
 class UserCtrl extends BaseCtrl {
   model = User;
+  singular = 'user';
+  plural = 'users';
 
-  override registerRoutes(router: Router, singular: string, plural: string) {
-    super.registerRoutes(router, singular, plural)
+  override registerRoutes(router: Router) {
+    super.registerRoutes(router)
     router.route('/login').post(this.login);
   }
 

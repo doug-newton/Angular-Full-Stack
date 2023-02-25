@@ -3,14 +3,16 @@ import { Request, Response, Router } from 'express';
 abstract class BaseCtrl {
 
   abstract model: any;
+  abstract singular: string;
+  abstract plural: string
 
-  registerRoutes(router: Router, singular: string, plural: string) {
-    router.route(`/${plural}`).get(this.getAll);
-    router.route(`/${plural}/count`).get(this.count);
-    router.route(`/${singular}`).post(this.insert);
-    router.route(`/${singular}/:id`).get(this.get);
-    router.route(`/${singular}/:id`).put(this.update);
-    router.route(`/${singular}/:id`).delete(this.delete);
+  registerRoutes(router: Router) {
+    router.route(`/${this.plural}`).get(this.getAll);
+    router.route(`/${this.plural}/count`).get(this.count);
+    router.route(`/${this.singular}`).post(this.insert);
+    router.route(`/${this.singular}/:id`).get(this.get);
+    router.route(`/${this.singular}/:id`).put(this.update);
+    router.route(`/${this.singular}/:id`).delete(this.delete);
   }
 
   // Get all

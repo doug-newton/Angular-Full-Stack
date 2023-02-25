@@ -11,9 +11,9 @@ const setRoutes = (app: Application): void => {
   const dogCtrl = new DogCtrl();
   const userCtrl = new UserCtrl();
 
-  catCtrl.registerRoutes(router, 'cat', 'cats');
-  userCtrl.registerRoutes(router, 'user', 'users');
-  dogCtrl.registerRoutes(router, 'dog', 'dogs');
+  catCtrl.registerRoutes(router);
+  userCtrl.registerRoutes(router);
+  dogCtrl.registerRoutes(router);
 
   // Apply the routes to our application with the prefix /api
   app.use('/api', router);
