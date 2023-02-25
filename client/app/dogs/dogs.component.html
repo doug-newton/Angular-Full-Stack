@@ -8,11 +8,11 @@
         <table class="table table-bordered">
             <thead class="table-secondary">
                 <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Age</th>
-                    <th scope="col">Weight</th>
-                    <th scope="col">Favourite Toy</th>
-                    <th scope="col">Actions</th>
+                    <th style="width: 20%" scope="col">Name</th>
+                    <th style="width: 20%" scope="col">Age</th>
+                    <th style="width: 20%" scope="col">Weight</th>
+                    <th style="width: 20%" scope="col">Favourite Toy</th>
+                    <th style="width: 20%" scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody *ngIf="dogs.length==0">
@@ -39,33 +39,26 @@
 
             <tbody *ngIf="isEditing && dog">
                 <tr>
-                    <td colspan="5">
-                        <form (ngSubmit)="editDog()">
-                            <div class="row row-cols-1 row-cols-sm-auto g-2">
-                                <div class="col">
-                                    <input class="form-control" placeholder="Name" name="name" [(ngModel)]="dog.name" type="text">
-                                </div>
-                                <div class="col">
-                                    <input class="form-control" placeholder="Age" name="age" [(ngModel)]="dog.age" type="number">
-                                </div>
-                                <div class="col">
-                                    <input class="form-control" placeholder="Weight" name="weight" [(ngModel)]="dog.weight"
-                                        type="number">
-                                </div>
-                                <div class="col">
-                                    <input class="form-control" placeholder="Favourite Toy" name="favouriteToy"
-                                        [(ngModel)]="dog.favouriteToy" type="text">
-                                </div>
-                                <div class="col">
-                                    <button class="btn btn-primary btn-sm" type="submit">
-                                        <i class="fa fa-save"></i> Save
-                                    </button>
-                                    <button class="btn btn-warning btn-sm ms-1" type="button" (click)="cancelEditing()">
-                                        <i class="fa fa-times"></i> Cancel
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
+                    <td>
+                        <input class="form-control" placeholder="Name" name="name" [(ngModel)]="dog.name" type="text">
+                    </td>
+                    <td>
+                        <input class="form-control" placeholder="Age" name="age" [(ngModel)]="dog.age" type="number">
+                    </td>
+                    <td>
+                        <input class="form-control" placeholder="Weight" name="weight" [(ngModel)]="dog.weight" type="number">
+                    </td>
+                    <td>
+                        <input class="form-control" placeholder="Favourite Toy" name="favouriteToy" [(ngModel)]="dog.favouriteToy"
+                            type="text">
+                    </td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" type="button" (click)="editDog()">
+                            <i class="fa fa-save"></i> Save
+                        </button>
+                        <button class="btn btn-warning btn-sm ms-1" type="button" (click)="cancelEditing()">
+                            <i class="fa fa-times"></i> Cancel
+                        </button>
                     </td>
                 </tr>
             </tbody>
