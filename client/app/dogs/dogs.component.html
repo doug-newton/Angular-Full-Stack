@@ -38,7 +38,7 @@
             </tbody>
 
             <tbody *ngIf="isEditing && dog">
-                <tr appEditDogForm [dog]="dog" (editDog)="editDog()" (cancelEditing)="cancelEditing()"></tr>
+                <tr appDogItemRow [dog]="dog" (editDog)="editDog()" (cancelEditing)="cancelEditing()"></tr>
             </tbody>
 
         </table>
