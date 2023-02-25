@@ -22,6 +22,7 @@ import { AccountComponent } from './account/account.component';
 import { AdminComponent } from './admin/admin.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { DogsComponent } from './dogs/dogs.component';
+import { AddDogFormComponent } from './add-dog-form/add-dog-form.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { DogsComponent } from './dogs/dogs.component';
     AccountComponent,
     AdminComponent,
     NotFoundComponent,
-    DogsComponent
+    DogsComponent,
+    AddDogFormComponent
   ],
   imports: [
     AppRoutingModule,

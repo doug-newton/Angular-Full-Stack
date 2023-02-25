@@ -1,0 +1,28 @@
+<div class="card">
+    <h4 class="card-header">Add new dog</h4>
+    <div class="card-body">
+        <form [formGroup]="addDogForm" (ngSubmit)="addDog()">
+            <div class="row row-cols-1 row-cols-sm-auto g-2">
+                <div class="col">
+                    <input class="form-control" placeholder="Name" name="name" formControlName="name" type="text">
+                </div>
+                <div class="col">
+                    <input class="form-control" placeholder="Age" name="age" formControlName="age" type="number">
+                </div>
+                <div class="col">
+                    <input class="form-control" placeholder="Weight" name="weight" formControlName="weight"
+                        type="number">
+                </div>
+                <div class="col">
+                    <input class="form-control" placeholder="Favourite Toy" name="favouriteToy"
+                        formControlName="favouriteToy" type="text">
+                </div>
+                <div class="col">
+                    <button class="btn btn-primary btn-small" type="submit">
+                        <i class="fa fa-plus"></i> Add
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
