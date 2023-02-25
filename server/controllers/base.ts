@@ -1,8 +1,17 @@
-import { Request, Response } from 'express';
+import { Request, Response, Router } from 'express';
 
 abstract class BaseCtrl {
 
   abstract model: any;
+
+  registerRoutes(router: Router, singular: string, plural: string) {
+    router.route(`/${plural}`).get(this.getAll);
+    router.route(`/${plural}/count`).get(this.count);
+    router.route(`/${singular}`).post(this.insert);
+    router.route(`/${singular}/:id`).get(this.get);
+    router.route(`/${singular}/:id`).put(this.update);
+    router.route(`/${singular}/:id`).delete(this.delete);
+  }
 
   // Get all
   getAll = async (req: Request, res: Response) => {
