@@ -20,25 +20,8 @@
                     <td colspan="5">there are no dogs. add one below</td>
                 </tr>
             </tbody>
-            <tbody *ngIf="!isEditing">
-                <tr *ngFor="let dog of dogs">
-                    <td>{{dog.name}}</td>
-                    <td>{{dog.age}}</td>
-                    <td>{{dog.weight}}</td>
-                    <td>{{dog.favouriteToy}}</td>
-                    <td>
-                        <button class="btn btn-sm btn-primary" (click)="enableEditing(dog)">
-                            <i class="fa fa-pencil"></i> Edit
-                        </button>
-                        <button class="btn btn-sm btn-danger ms-1" (click)="deleteDog(dog)">
-                            <i class="fa fa-trash"></i> Delete
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-
-            <tbody *ngIf="isEditing && dog">
-                <tr appDogItemRow [dog]="dog" (editDog)="editDog()" (cancelEditing)="cancelEditing()"></tr>
+            <tbody>
+                <tr appDogItemRow *ngFor="let dog of dogs" [dog]="dog" (dogDeleted)="removeDog($event)"></tr>
             </tbody>
 
         </table>

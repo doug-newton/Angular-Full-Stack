@@ -1,21 +1,36 @@
-<td>
-    <input class="form-control" placeholder="Name" name="name" [(ngModel)]="dog.name" type="text">
-</td>
-<td>
-    <input class="form-control" placeholder="Age" name="age" [(ngModel)]="dog.age" type="number">
-</td>
-<td>
-    <input class="form-control" placeholder="Weight" name="weight" [(ngModel)]="dog.weight" type="number">
-</td>
-<td>
-    <input class="form-control" placeholder="Favourite Toy" name="favouriteToy" [(ngModel)]="dog.favouriteToy"
-        type="text">
-</td>
-<td>
-    <button class="btn btn-primary btn-sm" type="button" (click)="this.editDog.emit()">
-        <i class="fa fa-save"></i> Save
-    </button>
-    <button class="btn btn-warning btn-sm ms-1" type="button" (click)="this.cancelEditing.emit()">
-        <i class="fa fa-times"></i> Cancel
-    </button>
-</td>
+<ng-container *ngIf="isEditing; else viewOnly" [formGroup]="form">
+    <td>
+        <input class="form-control" placeholder="Name" name="name" formControlName="name" type="text">
+    </td>
+    <td>
+        <input class="form-control" placeholder="Age" name="age" formControlName="age" type="number">
+    </td>
+    <td>
+        <input class="form-control" placeholder="Weight" name="weight" formControlName="weight" type="number">
+    </td>
+    <td>
+        <input class="form-control" placeholder="Favourite Toy" name="favouriteToy" formControlName="favouriteToy" type="text">
+    </td>
+    <td>
+        <button class="btn btn-primary btn-sm" type="button" (click)="save()">
+            <i class="fa fa-save"></i> Save
+        </button>
+        <button class="btn btn-warning btn-sm ms-1" type="button" (click)="cancelEditing()">
+            <i class="fa fa-times"></i> Cancel
+        </button>
+    </td>
+</ng-container>
+<ng-template #viewOnly>
+    <td>{{dog.name}}</td>
+    <td>{{dog.age}}</td>
+    <td>{{dog.weight}}</td>
+    <td>{{dog.favouriteToy}}</td>
+    <td>
+        <button class="btn btn-sm btn-primary" (click)="enableEditing()">
+            <i class="fa fa-pencil"></i> Edit
+        </button>
+        <button class="btn btn-sm btn-danger ms-1" (click)="deleteDog()">
+            <i class="fa fa-trash"></i> Delete
+        </button>
+    </td>
+</ng-template>

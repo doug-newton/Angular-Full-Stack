@@ -38,42 +38,9 @@ export class DogsComponent implements OnInit {
     })
   }
 
-  enableEditing(dog: Dog){
-    this.isEditing = true
-    this.dog = dog
+  removeDog(dog: Dog) {
+    this.dogs = this.dogs.filter(item => item._id !== dog._id)
   }
 
-  cancelEditing() {
-    this.isEditing = false
-    this.dog = new Dog
-    this.toast.setMessage( 'editing cancelled', 'warning')
-  }
-
-  editDog() {
-    this.dogService.updateDog(this.dog).subscribe({
-      next: result => {
-        this.isEditing = false;
-        this.toast.setMessage('dog updated!', 'success');
-      },
-      error: error => {
-        this.toast.setMessage(`something went wrong ${error}`, 'danger');
-      }
-    })
-  }
-
-  deleteDog(dog: Dog) {
-    if (!window.confirm(`Are you sure you want to delete '${dog.name}'?`)) {
-      return;
-    }
-    this.dogService.deleteDog(dog).subscribe({
-      next: result => {
-        this.dogs = this.dogs.filter(item => item._id !== dog._id)
-        this.toast.setMessage('dog deleted!', 'success')
-      },
-      error: error => {
-        this.toast.setMessage(`error: ${error}`, 'danger')
-      }
-    })
-  }
 
 }
