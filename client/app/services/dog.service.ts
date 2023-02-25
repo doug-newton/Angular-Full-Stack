@@ -28,11 +28,11 @@ export class DogService {
     return this.http.get<Dog>(`/api/dog/${id}`);
   }
 
-  updateDog(id: string, dog: Dog): Observable<any> {
-    return this.http.put<any>(`/api/dog/${id}`, dog);
+  updateDog(dog: Dog): Observable<any> {
+    return this.http.put(`/api/dog/${dog._id}`, dog, { responseType: 'text' });
   }
 
-  deleteDog(id: string): Observable<any> {
-    return this.http.delete<any>(`/api/dog/${id}`);
+  deleteDog(dog: Dog): Observable<any> {
+    return this.http.delete(`/api/dog/${dog._id}`, { responseType: 'text' });
   }
 }
