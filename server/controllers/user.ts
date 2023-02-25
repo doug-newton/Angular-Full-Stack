@@ -1,5 +1,5 @@
 import * as jwt from 'jsonwebtoken';
-import { Request, Response } from 'express';
+import { Request, Response, Router } from 'express';
 
 import User from '../models/user';
 import BaseCtrl from './base';
@@ -8,6 +8,11 @@ const secret: jwt.Secret = process.env.SECRET_TOKEN as string;
 
 class UserCtrl extends BaseCtrl {
   model = User;
+
+  override registerRoutes(router: Router, singular: string, plural: string) {
+    super.registerRoutes(router, singular, plural)
+    router.route('/login').post(this.login);
+  }
 
   login = async (req: Request, res: Response) => {
     try {
