@@ -21,8 +21,8 @@ export class AddDogFormComponent {
   ){
     this.addDogForm = this.formBuilder.group({
       name: new FormControl<string>('', {nonNullable: true, validators: [Validators.required]}),
-      age: new FormControl<number>(0, {nonNullable: true, validators: [Validators.required]}),
-      weight: new FormControl<number>(0, {nonNullable: true, validators: [Validators.required]}),
+      age: new FormControl<string>('', {nonNullable: true, validators: [Validators.required]}),
+      weight: new FormControl<string>('', {nonNullable: true, validators: [Validators.required]}),
       favouriteToy: new FormControl<string>('', {nonNullable: true, validators: [Validators.required]})
     })
   }
