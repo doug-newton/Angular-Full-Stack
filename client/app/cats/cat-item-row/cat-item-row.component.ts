@@ -35,6 +35,7 @@ export class CatItemRowComponent {
 
   cancelEditing(){
     this.isEditing = false
+    this.toast.setMessage('editing cancelled', 'warning');
   }
 
   save(){
@@ -47,7 +48,7 @@ export class CatItemRowComponent {
         this.toast.setMessage(`error: ${error}`, 'danger');
       },
       complete: () => {
-        this.cancelEditing();
+        this.isEditing = false
       }
     })
   }
