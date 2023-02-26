@@ -24,6 +24,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { DogsComponent } from './dogs/dogs.component';
 import { AddDogFormComponent } from './dogs/add-dog-form/add-dog-form.component';
 import { DogItemRowComponent } from './dogs/dog-item-row/dog-item-row.component';
+import { CatItemRowComponent } from './cats/cat-item-row/cat-item-row.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { DogItemRowComponent } from './dogs/dog-item-row/dog-item-row.component'
     NotFoundComponent,
     DogsComponent,
     AddDogFormComponent,
-    DogItemRowComponent
+    DogItemRowComponent,
+    CatItemRowComponent
   ],
   imports: [
     AppRoutingModule,
