@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CatService } from 'client/app/services/cat.service';
+import { DialogService } from 'client/app/services/dialog.service';
 import { Cat } from 'client/app/shared/models/cat.model';
 import { ToastComponent } from 'client/app/shared/toast/toast.component';
 
@@ -16,7 +17,8 @@ export class CatItemRowComponent {
 
   constructor(
     private catService: CatService,
-    public toast: ToastComponent
+    public toast: ToastComponent,
+    private dialogService: DialogService
   ){
   }
   
@@ -53,19 +55,20 @@ export class CatItemRowComponent {
     })
   }
 
-  deleteCat() {
-    if (!window.confirm(`are you sure you want to delete '${this.cat.name}'?`)) {
-      return;
-    }
-
-    this.catService.deleteCat(this.cat).subscribe({
-      next: result => {
-        this.toast.setMessage('cat deleted successfully', 'success');
-        this.catDeleted.emit(this.cat);
-      },
-      error: error => {
-        this.toast.setMessage(`error: ${error}`, 'dagner');
-      }
-    })
+  async deleteCat() {
+    this.dialogService.confirm({
+      title: 'Confirm',
+      body: `Are you sure you want to delete '${this.cat.name}'?`
+    }, () => {
+      this.catService.deleteCat(this.cat).subscribe({
+        next: result => {
+          this.toast.setMessage('cat deleted successfully', 'success');
+          this.catDeleted.emit(this.cat);
+        },
+        error: error => {
+          this.toast.setMessage(`error: ${error}`, 'dagner');
+        }
+      })
+    }, () => { });
   }
 }

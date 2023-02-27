@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { DialogService } from 'client/app/services/dialog.service';
 import { DogService } from '../../services/dog.service';
 import { Dog } from '../../shared/models/dog.model';
 import { ToastComponent } from '../../shared/toast/toast.component';
@@ -16,7 +17,8 @@ export class DogItemRowComponent {
 
   constructor(
     private dogService: DogService,
-    public toast: ToastComponent
+    public toast: ToastComponent,
+    private dialogService: DialogService
   ){
   }
 
@@ -54,18 +56,23 @@ export class DogItemRowComponent {
   }
 
   deleteDog() {
-    if (!window.confirm(`Are you sure you want to delete '${this.dog.name}'?`)) {
-      return;
-    }
-    this.dogService.deleteDog(this.dog).subscribe({
-      next: result => {
-        this.dogDeleted.emit(this.dog)
-        this.toast.setMessage('dog deleted!', 'success')
+    this.dialogService.confirm({
+      title: 'Confirm',
+      body: `Are you sure you want to delete '${this.dog.name}'?`
+    },
+      () => {
+        this.dogService.deleteDog(this.dog).subscribe({
+          next: result => {
+            this.dogDeleted.emit(this.dog)
+            this.toast.setMessage('dog deleted!', 'success')
+          },
+          error: error => {
+            this.toast.setMessage(`error: ${error}`, 'danger')
+          }
+        })
       },
-      error: error => {
-        this.toast.setMessage(`error: ${error}`, 'danger')
-      }
-    })
+      () => { }
+    )
   }
 
 }
