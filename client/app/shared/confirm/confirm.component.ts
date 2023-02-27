@@ -15,4 +15,16 @@ export class ConfirmComponent {
 
   open$: Observable<boolean> = this.dialogService.confirmDialogOpen$
 
+  dismiss() {
+    this.dialogService.confirmDismiss()
+  }
+
+  confirmYes() {
+    this.dialogService.confirmYes()
+  }
+
+  confirmNo(){
+    this.dialogService.confirmNo()
+  }
+
 }
