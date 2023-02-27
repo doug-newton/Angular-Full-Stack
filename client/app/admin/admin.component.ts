@@ -4,6 +4,7 @@ import { ToastComponent } from '../shared/toast/toast.component';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { User } from '../shared/models/user.model';
+import { DialogService } from '../services/dialog.service';
 
 @Component({
   selector: 'app-admin',
@@ -16,7 +17,8 @@ export class AdminComponent implements OnInit {
 
   constructor(public auth: AuthService,
               public toast: ToastComponent,
-              private userService: UserService) { }
+              private userService: UserService,
+              private dialogService: DialogService) { }
 
   ngOnInit(): void {
     this.getUsers();
@@ -31,13 +33,19 @@ export class AdminComponent implements OnInit {
   }
 
   deleteUser(user: User): void {
-    if (window.confirm('Are you sure you want to delete ' + user.username + '?')) {
-      this.userService.deleteUser(user).subscribe({
-        next: data => this.toast.setMessage('User deleted successfully.', 'success'),
-        error: error => console.log(error),
-        complete: () => this.getUsers()
-      });
-    }
+    this.dialogService.confirm({
+      title: 'Confirm',
+      body: 'Are you sure you want to delete ' + user.username + '?'
+    },
+      () => {
+        this.userService.deleteUser(user).subscribe({
+          next: data => this.toast.setMessage('User deleted successfully.', 'success'),
+          error: error => console.log(error),
+          complete: () => this.getUsers()
+        });
+      },
+      () => {
+      })
   }
 
 }

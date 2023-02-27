@@ -1,0 +1,25 @@
+<ng-container *ngIf="modalState$ | async as state">
+    <ng-container *ngIf="state.open">
+
+        <div class="modal-backdrop"></div>
+
+        <div class="modal modal-open" tabindex="-1" role="document">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">{{state.content.title}}</h5>
+                        <button type="button" (click)="dismiss()" class="btn-close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>{{state.content.body}}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" (click)="confirmYes()" class="btn btn-primary">Yes</button>
+                        <button type="button" (click)="confirmNo()" class="btn btn-outline-secondary">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </ng-container>
+</ng-container>
