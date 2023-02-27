@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, Subscription } from 'rxjs';
 
 interface IConfirmContent {
   title: string
@@ -13,10 +13,20 @@ export class DialogService {
 
   constructor() { }
 
-  confirm(content: IConfirmContent): Observable<boolean> {
+  confirm(content: IConfirmContent, onYes: () => void, onNo: () => void) {
     this.confirmContent$.next(content);
     this.confirmDialogOpen$.next(true);
-    return this.confirmResponse$
+    const sub: Subscription = this.confirmResponse$.subscribe({
+      next: response => {
+        if (response == true) {
+          onYes();
+        }
+        else if (response == false) {
+          onNo();
+        }
+        sub.unsubscribe();
+      }
+    })
   }
 
   confirmContent$: Subject<IConfirmContent> = new Subject
