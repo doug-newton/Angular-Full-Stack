@@ -19,7 +19,11 @@ export class DialogService {
   constructor() { }
 
   toastNotify(message: string, status: 'success' | 'warning' | 'danger') {
+    this.toastContent$.next({ message, status })
   }
+
+  toastContent$: Subject<IToastContent> = new Subject
+  toastOpen$: BehaviorSubject<boolean> = new BehaviorSubject(false)
 
   confirm(content: IConfirmContent, onYes: () => void, onNo: () => void) {
     this.confirmContent$.next(content);
