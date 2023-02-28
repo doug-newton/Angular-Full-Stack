@@ -82,7 +82,6 @@ describe('Component: Cats', () => {
 
   it('should display the edit form', async () => {
     component.isEditing = true;
-    component.cat = { name: 'Cat 1', age: 1, weight: 2 };
     fixture.detectChanges();
     await fixture.whenStable();
     const tds = fixture.debugElement.queryAll(By.css('td'));
