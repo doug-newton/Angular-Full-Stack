@@ -1,7 +1,13 @@
-<div *ngIf="message.body" class="alert" [ngClass]="'alert-' + message.type" role="alert">
-  <i class="fa me-2" [ngClass]="{
-    'fa-check-circle': message.type === 'success',
-    'fa-exclamation-circle': message.type === 'warning' || message.type === 'danger'
+<ng-container *ngIf="this.state$ | async as state">
+  <ng-container *ngIf="state.open">
+
+    <div class="alert" [ngClass]="'alert-' + state.content.status" role="alert">
+      <i class="fa me-2" [ngClass]="{
+    'fa-check-circle': state.content.status === 'success',
+    'fa-exclamation-circle': state.content.status === 'warning' || state.content.status === 'danger'
   }"></i>
-  <span [innerHTML]="message.body"></span>
-</div>
+      {{state.content.message}}
+    </div>
+
+  </ng-container>
+</ng-container>

@@ -20,10 +20,21 @@ export class DialogService {
 
   toastNotify(message: string, status: 'success' | 'warning' | 'danger') {
     this.toastContent$.next({ message, status })
+    this.toastOpen$.next(true)
+
+    if (this.toastTimeoutRef !== 0) {
+      clearTimeout(this.toastTimeoutRef)
+    }
+
+    this.toastTimeoutRef = window.setTimeout(()=>{
+      this.toastOpen$.next(false)
+    }, 3000)
   }
 
   toastContent$: Subject<IToastContent> = new Subject
   toastOpen$: BehaviorSubject<boolean> = new BehaviorSubject(false)
+
+  toastTimeoutRef = 0
 
   confirm(content: IConfirmContent, onYes: () => void, onNo: () => void) {
     this.confirmContent$.next(content);
