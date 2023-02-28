@@ -6,6 +6,11 @@ interface IConfirmContent {
   body: string
 }
 
+interface IToastContent {
+  message: string
+  status: 'success' | 'warning' | 'danger'
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +18,7 @@ export class DialogService {
 
   constructor() { }
 
-  toastNotify(message: string, status: string) {
+  toastNotify(message: string, status: 'success' | 'warning' | 'danger') {
   }
 
   confirm(content: IConfirmContent, onYes: () => void, onNo: () => void) {

@@ -65,7 +65,7 @@ export class CatItemRowComponent {
           this.catDeleted.emit(this.cat);
         },
         error: error => {
-          this.dialogService.toastNotify(`error: ${error}`, 'dagner');
+          this.dialogService.toastNotify(`error: ${error}`, 'danger');
         }
       })
     }, () => { });
