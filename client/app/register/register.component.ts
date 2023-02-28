@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 import { UserService } from '../services/user.service';
-import { ToastComponent } from '../shared/toast/toast.component';
+import { ToastComponent } from '../shared/dialogs/toast/toast.component';
 import { DialogService } from '../services/dialog.service';
 
 @Component({

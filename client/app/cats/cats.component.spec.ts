@@ -2,7 +2,7 @@ import { waitForAsync, TestBed, ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { FormsModule, UntypedFormBuilder, ReactiveFormsModule } from '@angular/forms';
 
-import { ToastComponent } from '../shared/toast/toast.component';
+import { ToastComponent } from '../shared/dialogs/toast/toast.component';
 import { CatService } from '../services/cat.service';
 import { CatsComponent } from './cats.component';
 import { of, Observable } from 'rxjs';

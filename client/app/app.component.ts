@@ -1,7 +1,7 @@
 import { AfterViewChecked, ChangeDetectorRef, Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { DialogService } from './services/dialog.service';
-import { ToastComponent } from './shared/toast/toast.component';
+import { ToastComponent } from './shared/dialogs/toast/toast.component';
 
 @Component({
   selector: 'app-root',

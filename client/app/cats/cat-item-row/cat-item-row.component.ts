@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CatService } from 'client/app/services/cat.service';
 import { DialogService } from 'client/app/services/dialog.service';
 import { Cat } from 'client/app/shared/models/cat.model';
-import { ToastComponent } from 'client/app/shared/toast/toast.component';
+import { ToastComponent } from 'client/app/shared/dialogs/toast/toast.component';
 
 @Component({
   selector: 'tr[appCatItemRow]',

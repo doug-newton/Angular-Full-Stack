@@ -1,7 +1,7 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { ToastComponent } from '../shared/toast/toast.component';
+import { ToastComponent } from '../shared/dialogs/toast/toast.component';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { AdminComponent } from './admin.component';

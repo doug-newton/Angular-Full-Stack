@@ -3,7 +3,7 @@ import { By } from '@angular/platform-browser';
 import { FormsModule, UntypedFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { ToastComponent } from '../shared/toast/toast.component';
+import { ToastComponent } from '../shared/dialogs/toast/toast.component';
 import { AuthService } from '../services/auth.service';
 import { LoginComponent } from './login.component';
 

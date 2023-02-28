@@ -3,7 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { DialogService } from 'client/app/services/dialog.service';
 import { DogService } from '../../services/dog.service';
 import { Dog } from '../../shared/models/dog.model';
-import { ToastComponent } from '../../shared/toast/toast.component';
+import { ToastComponent } from '../../shared/dialogs/toast/toast.component';
 
 @Component({
   selector: 'tr[appDogItemRow]',

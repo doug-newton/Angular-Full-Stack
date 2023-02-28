@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CatService } from '../services/cat.service';
-import { ToastComponent } from '../shared/toast/toast.component';
+import { ToastComponent } from '../shared/dialogs/toast/toast.component';
 import { Cat } from '../shared/models/cat.model';
 import { DialogService } from '../services/dialog.service';
 

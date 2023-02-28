@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl, Validators, UntypedFormBuilder } from '@angular/forms';
 import { CatService } from '../../services/cat.service';
-import { ToastComponent } from '../../shared/toast/toast.component';
+import { ToastComponent } from '../../shared/dialogs/toast/toast.component';
 import { Cat } from '../../shared/models/cat.model';
 import { DialogService } from 'client/app/services/dialog.service';
 
