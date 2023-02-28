@@ -4,6 +4,7 @@ import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } 
 
 import { AuthService } from '../services/auth.service';
 import { ToastComponent } from '../shared/toast/toast.component';
+import { DialogService } from '../services/dialog.service';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit {
   constructor(private auth: AuthService,
               private formBuilder: UntypedFormBuilder,
               private router: Router,
-              public toast: ToastComponent) {
+              private dialogService: DialogService) {
     this.loginForm = this.formBuilder.group({
       email: this.email,
       password: this.password

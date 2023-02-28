@@ -4,6 +4,7 @@ import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } 
 
 import { UserService } from '../services/user.service';
 import { ToastComponent } from '../shared/toast/toast.component';
+import { DialogService } from '../services/dialog.service';
 
 @Component({
   selector: 'app-register',
@@ -34,7 +35,7 @@ export class RegisterComponent {
 
   constructor(private formBuilder: UntypedFormBuilder,
               private router: Router,
-              public toast: ToastComponent,
+              private dialogService: DialogService,
               private userService: UserService) {
     this.registerForm = this.formBuilder.group({
       username: this.username,
@@ -59,10 +60,10 @@ export class RegisterComponent {
   register(): void {
     this.userService.register(this.registerForm.value).subscribe({
       next: res => {
-        this.toast.setMessage('You successfully registered!', 'success');
+        this.dialogService.toastNotify('You successfully registered!', 'success');
         this.router.navigate(['/login']);
       },
-      error: error => this.toast.setMessage('Email already exists', 'danger')
+      error: error => this.dialogService.toastNotify('Email already exists', 'danger')
     });
   }
 }

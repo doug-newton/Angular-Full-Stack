@@ -16,7 +16,6 @@ export class AdminComponent implements OnInit {
   isLoading = true;
 
   constructor(public auth: AuthService,
-              public toast: ToastComponent,
               private userService: UserService,
               private dialogService: DialogService) { }
 
@@ -39,7 +38,7 @@ export class AdminComponent implements OnInit {
     },
       () => {
         this.userService.deleteUser(user).subscribe({
-          next: data => this.toast.setMessage('User deleted successfully.', 'success'),
+          next: data => this.dialogService.toastNotify('User deleted successfully.', 'success'),
           error: error => console.log(error),
           complete: () => this.getUsers()
         });

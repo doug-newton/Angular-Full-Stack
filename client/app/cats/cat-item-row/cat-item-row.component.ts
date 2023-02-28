@@ -17,7 +17,6 @@ export class CatItemRowComponent {
 
   constructor(
     private catService: CatService,
-    public toast: ToastComponent,
     private dialogService: DialogService
   ){
   }
@@ -37,17 +36,17 @@ export class CatItemRowComponent {
 
   cancelEditing(){
     this.isEditing = false
-    this.toast.setMessage('editing cancelled', 'warning');
+    this.dialogService.toastNotify('editing cancelled', 'warning');
   }
 
   save(){
     this.cat = this.editCatForm.value as Cat
     this.catService.editCat(this.cat).subscribe({
       next: result => {
-        this.toast.setMessage('cat edited successfully', 'success');
+        this.dialogService.toastNotify('cat edited successfully', 'success');
       },
       error: error => {
-        this.toast.setMessage(`error: ${error}`, 'danger');
+        this.dialogService.toastNotify(`error: ${error}`, 'danger');
       },
       complete: () => {
         this.isEditing = false
@@ -62,11 +61,11 @@ export class CatItemRowComponent {
     }, () => {
       this.catService.deleteCat(this.cat).subscribe({
         next: result => {
-          this.toast.setMessage('cat deleted successfully', 'success');
+          this.dialogService.toastNotify('cat deleted successfully', 'success');
           this.catDeleted.emit(this.cat);
         },
         error: error => {
-          this.toast.setMessage(`error: ${error}`, 'dagner');
+          this.dialogService.toastNotify(`error: ${error}`, 'danger');
         }
       })
     }, () => { });

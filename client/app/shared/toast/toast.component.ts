@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { DialogService } from 'client/app/services/dialog.service';
+import { combineLatest, map, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-toast',
@@ -6,15 +8,15 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./toast.component.scss']
 })
 export class ToastComponent {
-  @Input() message = { body: '', type: '' };
-  existingTimeout = 0;
 
-  setMessage(body: string, type: string, time = 3000): void {
-    if (this.existingTimeout) {
-      clearTimeout(this.existingTimeout);
-    }
-    this.message.body = body;
-    this.message.type = type;
-    this.existingTimeout = window.setTimeout(() => this.message.body = '', time);
-  }
+  constructor(
+    private dialogService: DialogService
+  ) { }
+
+  open$: Observable<boolean> = this.dialogService.toastOpen$
+  content$: Observable<any> = this.dialogService.toastContent$
+  state$ = combineLatest([
+    this.open$,
+    this.content$
+  ]).pipe(map(([open, content])=>({open, content})))
 }
