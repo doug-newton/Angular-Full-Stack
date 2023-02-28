@@ -17,7 +17,6 @@ export class DogItemRowComponent {
 
   constructor(
     private dogService: DogService,
-    public toast: ToastComponent,
     private dialogService: DialogService
   ){
   }
@@ -38,7 +37,7 @@ export class DogItemRowComponent {
   }
 
   cancelEditing() {
-    this.toast.setMessage('editing cancelled', 'warning');
+    this.dialogService.toastNotify('editing cancelled', 'warning');
     this.isEditing = false
   }
 
@@ -47,10 +46,10 @@ export class DogItemRowComponent {
     this.dogService.updateDog(this.dog).subscribe({
       next: result => {
         this.isEditing = false;
-        this.toast.setMessage('dog updated!', 'success');
+        this.dialogService.toastNotify('dog updated!', 'success');
       },
       error: error => {
-        this.toast.setMessage(`something went wrong ${error}`, 'danger');
+        this.dialogService.toastNotify(`something went wrong ${error}`, 'danger');
       }
     })
   }
@@ -64,10 +63,10 @@ export class DogItemRowComponent {
         this.dogService.deleteDog(this.dog).subscribe({
           next: result => {
             this.dogDeleted.emit(this.dog)
-            this.toast.setMessage('dog deleted!', 'success')
+            this.dialogService.toastNotify('dog deleted!', 'success')
           },
           error: error => {
-            this.toast.setMessage(`error: ${error}`, 'danger')
+            this.dialogService.toastNotify(`error: ${error}`, 'danger')
           }
         })
       },

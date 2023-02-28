@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { DialogService } from '../services/dialog.service';
 import { DogService } from '../services/dog.service';
 import { Dog } from '../shared/models/dog.model';
 import { ToastComponent } from '../shared/toast/toast.component';
@@ -18,7 +19,7 @@ export class DogsComponent implements OnInit {
 
   constructor(
     private dogService: DogService,
-    public toast: ToastComponent
+    private dialogService: DialogService
   ) {
   }
 
@@ -31,7 +32,7 @@ export class DogsComponent implements OnInit {
       next: dogs => {
         this.dogs = dogs
       },
-      error: error => this.toast.setMessage('unable to load dogs!', 'danger'),
+      error: error => this.dialogService.toastNotify('unable to load dogs!', 'danger'),
       complete: () => {
         this.isLoading = false
       }

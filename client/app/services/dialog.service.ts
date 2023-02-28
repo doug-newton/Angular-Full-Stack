@@ -13,6 +13,9 @@ export class DialogService {
 
   constructor() { }
 
+  toastNotify(message: string, status: string) {
+  }
+
   confirm(content: IConfirmContent, onYes: () => void, onNo: () => void) {
     this.confirmContent$.next(content);
     this.confirmDialogOpen$.next(true);

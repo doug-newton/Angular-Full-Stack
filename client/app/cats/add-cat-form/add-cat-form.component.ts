@@ -3,6 +3,7 @@ import { UntypedFormGroup, UntypedFormControl, Validators, UntypedFormBuilder } 
 import { CatService } from '../../services/cat.service';
 import { ToastComponent } from '../../shared/toast/toast.component';
 import { Cat } from '../../shared/models/cat.model';
+import { DialogService } from 'client/app/services/dialog.service';
 
 @Component({
   selector: 'app-add-cat-form',
@@ -20,7 +21,7 @@ export class AddCatFormComponent {
 
   constructor(private catService: CatService,
               private formBuilder: UntypedFormBuilder,
-              public toast: ToastComponent) {
+              private dialogService: DialogService) {
     this.addCatForm = this.formBuilder.group({
       name: this.name,
       age: this.age,
@@ -33,7 +34,7 @@ export class AddCatFormComponent {
       next: res => {
         this.cats.push(res);
         this.addCatForm.reset();
-        this.toast.setMessage('Item added successfully.', 'success');
+        this.dialogService.toastNotify('Item added successfully.', 'success');
       },
       error: error => console.log(error)
     });

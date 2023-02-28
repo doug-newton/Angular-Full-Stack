@@ -3,6 +3,7 @@ import { ToastComponent } from '../shared/toast/toast.component';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { User } from '../shared/models/user.model';
+import { DialogService } from '../services/dialog.service';
 
 @Component({
   selector: 'app-account',
@@ -14,7 +15,7 @@ export class AccountComponent implements OnInit {
   isLoading = true;
 
   constructor(private auth: AuthService,
-              public toast: ToastComponent,
+              private dialogService: DialogService,
               private userService: UserService) { }
 
   ngOnInit(): void {
@@ -32,7 +33,7 @@ export class AccountComponent implements OnInit {
   save(user: User): void {
     this.userService.editUser(user).subscribe({
       next: res => {
-        this.toast.setMessage('Account settings saved!', 'success');
+        this.dialogService.toastNotify('Account settings saved!', 'success');
         this.auth.currentUser = user;
         this.auth.isAdmin = user.role === 'admin';
       },

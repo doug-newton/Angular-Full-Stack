@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { CatService } from '../services/cat.service';
 import { ToastComponent } from '../shared/toast/toast.component';
 import { Cat } from '../shared/models/cat.model';
+import { DialogService } from '../services/dialog.service';
 
 @Component({
   selector: 'app-cats',
@@ -16,7 +17,7 @@ export class CatsComponent implements OnInit {
   isEditing = false;
 
   constructor(private catService: CatService,
-              public toast: ToastComponent) { }
+              private dialogService: DialogService) { }
 
   ngOnInit(): void {
     this.getCats();

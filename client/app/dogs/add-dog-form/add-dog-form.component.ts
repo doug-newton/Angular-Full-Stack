@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { DialogService } from 'client/app/services/dialog.service';
 import { DogService } from '../../services/dog.service';
 import { Dog } from '../../shared/models/dog.model';
 import { ToastComponent } from '../../shared/toast/toast.component';
@@ -17,7 +18,7 @@ export class AddDogFormComponent {
   constructor(
     private formBuilder: FormBuilder,
     private dogService: DogService,
-    public toast: ToastComponent,
+    private dialogService: DialogService,
   ){
     this.addDogForm = this.formBuilder.group({
       name: new FormControl<string>('', {nonNullable: true, validators: [Validators.required]}),
@@ -32,10 +33,10 @@ export class AddDogFormComponent {
       next: dog => {
         this.dogs.push(dog);
         this.addDogForm.reset();
-        this.toast.setMessage('dog added successfully', 'success')
+        this.dialogService.toastNotify('dog added successfully', 'success')
       },
       error: error => {
-        this.toast.setMessage('something went wrong', 'danger')
+        this.dialogService.toastNotify('something went wrong', 'danger')
       }
     })
   }

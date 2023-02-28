@@ -6,6 +6,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { UserService } from './user.service';
 import { ToastComponent } from '../shared/toast/toast.component';
 import { User } from '../shared/models/user.model';
+import { DialogService } from './dialog.service';
 
 @Injectable()
 export class AuthService {
@@ -17,7 +18,7 @@ export class AuthService {
   constructor(private userService: UserService,
               private router: Router,
               private jwtHelper: JwtHelperService,
-              public toast: ToastComponent) {
+              private dialogService: DialogService) {
     const token = localStorage.getItem('token');
     if (token) {
       const decodedUser = this.decodeUserFromToken(token);
@@ -34,7 +35,7 @@ export class AuthService {
         this.loggedIn = true;
         this.router.navigate(['/']);
       },
-      error: error => this.toast.setMessage('Invalid email or password!', 'danger')
+      error: error => this.dialogService.toastNotify('Invalid email or password!', 'danger')
     });
   }
 
