@@ -25,6 +25,7 @@ import { DogsComponent } from './dogs/dogs.component';
 import { AddDogFormComponent } from './dogs/add-dog-form/add-dog-form.component';
 import { DogItemRowComponent } from './dogs/dog-item-row/dog-item-row.component';
 import { CatItemRowComponent } from './cats/cat-item-row/cat-item-row.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { CatItemRowComponent } from './cats/cat-item-row/cat-item-row.component'
     DogsComponent,
     AddDogFormComponent,
     DogItemRowComponent,
-    CatItemRowComponent
+    CatItemRowComponent,
+    NavbarComponent
   ],
   imports: [
     AppRoutingModule,
